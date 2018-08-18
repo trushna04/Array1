@@ -1,0 +1,49 @@
+package stringsplittertester;
+
+import java.util.Scanner;
+
+public class SwapElements {
+	
+	
+	public static void main(String args[]) {
+		
+		Scanner sc = new Scanner(System.in);
+		int[] arr = new int[11];
+		System.out.println("Enter 11 elements of Array one by one");
+		for(int i=0 ; i < 11 ; i++) {
+			System.out.println("Enter element at postion " + (i+1));
+			arr[i] = sc.nextInt();
+		}
+		
+		arr = swapElements(arr);
+		
+		for(int j = 0 ; j  < arr.length ; j++) {
+			System.out.print(arr[j]+"  ");
+		}
+	   
+		
+	}
+
+	private static int[] swapElements(int[] array) {
+		
+		
+		array = rotateElementsonRightSide(array,5, 11);
+		return array;
+	}
+
+	private static int[] rotateElementsonRightSide(int[] array, int lowerInd, int higherInd) {
+		
+		int temp =  array[higherInd-1]; //Save the element at higher index position
+		
+		//shift all element from lower index to (higherIndex) on right by one position
+		for(int i = (higherInd-1); i >= lowerInd ; i--) {
+			array[i]= array[i-1];
+		}
+		
+		array[lowerInd-1] = temp ; //set elemnt at lower index with initial higher index element
+		
+		return array;
+	}
+
+	
+}
